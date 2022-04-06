@@ -6,8 +6,19 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+# http - web
 actix-web = "4.0.1"
 json = "0.12"
 log = "0.4"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+
+# log4rs
+#log4rs = "1.0.0"
+
+# redis
+actix = "0.12"
+actix-redis = "0.11.0"
+
+# mobc_redis
+mobc-redis = "0.7.0"

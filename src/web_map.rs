@@ -1,19 +1,13 @@
 use actix_web::{HttpResponse, web};
-use serde::{Deserialize, Serialize};
-use crate::bean;
+use log::info;
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct User {
-    username: String,
-    password: String,
-}
+use bean::Rst;
+
+use crate::bean;
+use crate::bean::User;
+
 
 pub(crate) async fn login(user: web::Json<User>) -> HttpResponse {
-    print!("user: {:?}", &user);
-    let rst = bean::Result {
-        err_code: 0,
-        err_msg: String::from("OK"),
-    };
-
-    HttpResponse::Ok().json(rst)
+    info!("user: {:?}", &user);
+    HttpResponse::Ok().json(Rst::ok(None))
 }
