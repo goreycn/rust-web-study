@@ -9,6 +9,7 @@ use web_index::index;
 use web_map::*;
 use web_redis::*;
 use web_redis_mobc::*;
+use web_error_demo::*;
 
 mod web_index;
 mod web_map;
@@ -16,6 +17,9 @@ mod bean;
 mod log_tool;
 mod web_redis;
 mod web_redis_mobc;
+mod custom_error;
+mod web_error_demo;
+
 
 #[actix_web::main] // or #[tokio::main]
 async fn main() -> std::io::Result<()> {
@@ -40,6 +44,7 @@ async fn main() -> std::io::Result<()> {
             .route("/redis/get", web::get().to(get))
             .route("/redis2/get", web::get().to(get2))
             .route("/redis2/add", web::get().to(add2))
+            .route("/forbidden", web::get().to(error_forbidden))
 
     })
         .bind(("0.0.0.0", 18080))?

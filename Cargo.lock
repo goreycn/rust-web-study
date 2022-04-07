@@ -658,6 +658,7 @@ dependencies = [
  "actix",
  "actix-redis",
  "actix-web",
+ "derive_more",
  "json",
  "log",
  "mobc-redis",

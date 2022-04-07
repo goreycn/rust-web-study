@@ -22,3 +22,7 @@ actix-redis = "0.11.0"
 
 # mobc_redis  : https://docs.rs/mobc-redis/0.5.1/mobc_redis/trait.AsyncCommands.html
 mobc-redis = "0.7.0"
+
+# custom error : https://mattgathu.github.io/2020/04/16/actix-web-error-handling.html
+#thiserror = " 1.0.30"
+derive_more = "0.99.17"

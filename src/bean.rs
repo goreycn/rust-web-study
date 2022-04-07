@@ -25,6 +25,6 @@ pub struct User {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SomeUser {
-    username: Option<String>,
+    pub(crate) username: Option<String>,
     password: Option<String>,
 }
