@@ -1,7 +1,7 @@
 use ::log::info;
 use actix_redis::RedisActor;
 use actix_web::{App, HttpServer, web};
-use mobc_redis::{redis, RedisConnectionManager};
+use mobc_redis::redis;
 use mobc_redis::mobc::Pool;
 use redis::AsyncCommands;
 
@@ -19,6 +19,7 @@ mod web_redis;
 mod web_redis_mobc;
 mod custom_error;
 mod web_error_demo;
+mod my_error;
 
 
 #[actix_web::main] // or #[tokio::main]
@@ -45,6 +46,8 @@ async fn main() -> std::io::Result<()> {
             .route("/redis2/get", web::get().to(get2))
             .route("/redis2/add", web::get().to(add2))
             .route("/forbidden", web::get().to(error_forbidden))
+            .route("/custom", web::get().to(error_with_message))
+            .route("/custom2", web::get().to(error_with_message2))
 
     })
         .bind(("0.0.0.0", 18080))?

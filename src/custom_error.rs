@@ -5,9 +5,7 @@ use std::os::macos::raw::stat;
 use actix_web::{App, error::ResponseError, get, http::StatusCode, HttpResponse, HttpServer, web};
 use actix_web::body::BoxBody;
 use derive_more::{Display, Error};
-// use thiserror::Error;
-
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 struct ErrorResponse {
@@ -19,12 +17,10 @@ struct ErrorResponse {
 
 #[derive(Error, Debug)]
 pub enum CustomError {
-    // #[error("Requested file wat not found")]
     NotFound,
-    // #[error("You are forbidden")]
     Forbidden,
-    // #[error("Unknown Internal Error")]
     Unknown,
+    // Other(String),
 }
 
 impl CustomError {
@@ -33,13 +29,17 @@ impl CustomError {
             CustomError::NotFound => "NotFound".to_string(),
             CustomError::Forbidden => "Forbidden".to_string(),
             CustomError::Unknown => "Unknown".to_string(),
+            // CustomError::Other(_) => "Other".to_string(),
         }
     }
 }
 
 impl Display for CustomError {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "reason : - {}", self.name())
+        match self {
+            // CustomError::Other(msg) => write!(f, "reason : - {} ", msg),
+            _ => write!(f, "reason : - {} ", self.name()),
+        }
     }
 }
 
