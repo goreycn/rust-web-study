@@ -21,3 +21,10 @@ pub struct User {
     username: String,
     password: String,
 }
+
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SomeUser {
+    username: Option<String>,
+    password: Option<String>,
+}

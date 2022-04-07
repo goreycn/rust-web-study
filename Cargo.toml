@@ -20,5 +20,5 @@ serde_json = "1.0"
 actix = "0.12"
 actix-redis = "0.11.0"
 
-# mobc_redis
+# mobc_redis  : https://docs.rs/mobc-redis/0.5.1/mobc_redis/trait.AsyncCommands.html
 mobc-redis = "0.7.0"
