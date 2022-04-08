@@ -11,20 +11,22 @@ impl Rst {
     pub fn ok(msg: Option<String>) -> Rst {
         Rst {
             err_code: 0,
-            err_msg: msg.unwrap_or(String::from("succeed"))
+            err_msg: msg.unwrap_or(String::from("succeed")),
         }
     }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct User {
-    username: String,
-    password: String,
+    #[serde(default)]
+    pub username: String,
+    #[serde(default)]
+    pub password: String,
 }
 
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SomeUser {
-    pub(crate) username: Option<String>,
-    password: Option<String>,
+    pub username: Option<String>,
+    pub password: Option<String>,
 }
