@@ -24,5 +24,10 @@ actix-redis = "0.11.0"
 mobc-redis = "0.7.0"
 
 # custom error : https://mattgathu.github.io/2020/04/16/actix-web-error-handling.html
-#thiserror = " 1.0.30"
 derive_more = "0.99.17"
+
+# base64 unbase64
+base64 = "0.13.0"
+
+# zip unzip
+flate2 = "1.0.22"
