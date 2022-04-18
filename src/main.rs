@@ -1,6 +1,9 @@
+use std::fs::File;
+use std::io::Read;
 use ::log::info;
 use actix_redis::RedisActor;
 use actix_web::{App, HttpServer, web};
+use log::warn;
 use mobc_redis::redis;
 use mobc_redis::mobc::Pool;
 use redis::AsyncCommands;
@@ -10,6 +13,7 @@ use web_map::*;
 use web_redis::*;
 use web_redis_mobc::*;
 use web_error_demo::*;
+use crate::bean::Config;
 
 mod web_index;
 mod web_map;
@@ -20,11 +24,17 @@ mod web_redis_mobc;
 mod custom_error;
 mod web_error_demo;
 mod my_error;
+mod load_config;
 
 
 #[actix_web::main] // or #[tokio::main]
 async fn main() -> std::io::Result<()> {
     log_tool::init().expect("log init failed");
+
+    let config = load_config::load_config();
+
+    println!("{}", config.address);
+    println!("{}", config.address);
 
     info!("starting HTTP server at http://localhost:18080");
 
@@ -48,7 +58,6 @@ async fn main() -> std::io::Result<()> {
             .route("/forbidden", web::get().to(error_forbidden))
             .route("/custom", web::get().to(error_with_message))
             .route("/custom2", web::get().to(error_with_message2))
-
     })
         .bind(("0.0.0.0", 18080))?
         .run()

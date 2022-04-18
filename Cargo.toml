@@ -13,6 +13,9 @@ log = "0.4"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
+# parse toml
+toml = "0.5"
+
 # log4rs
 #log4rs = "1.0.0"
 
@@ -31,3 +34,4 @@ base64 = "0.13.0"
 
 # zip unzip
 flate2 = "1.0.22"
+

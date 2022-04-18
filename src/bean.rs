@@ -1,7 +1,18 @@
+use std::net::SocketAddr;
 use actix_web::{Error, HttpResponse};
 use serde::{Deserialize, Serialize};
 
 use crate::my_error::MyError;
+
+
+/// 解析配置文件参数
+#[derive(Deserialize)]
+pub struct Config {
+    pub address: SocketAddr,
+}
+
+
+
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Rst {
