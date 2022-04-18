@@ -13,7 +13,6 @@ pub struct Config {
 
 
 
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Rst {
     pub err_code: i8,
